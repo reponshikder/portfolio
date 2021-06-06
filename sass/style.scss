@@ -1,0 +1,235 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,300;0,400;0,700;1,500&display=swap');
+
+@import '_variable';
+
+@import '_mixin';
+
+@import '_extend';
+
+
+body{
+	font-family: $font;
+}
+
+nav {
+    background-color: $overlay;
+    @include paddingY(0);
+
+
+
+	 .navbar-nav .nav-link {
+	    color: #ffffff !important;
+	    font-size: 20px;
+	    font-weight: 600;
+	    @include paddingY(50px);
+	    @include paddingX(15px);
+	    position: relative;
+
+	    &::after{
+	    	content:"";
+	    	width: 100%;
+	    	height: 4px;
+	    	background: $themeColour;
+	    	position: absolute;
+	    	left: 0;
+	    	bottom: -4px;
+	    	transform: scaleX(0);
+	    	@include transition(0.3s , ease);
+
+	    }
+
+	    &:hover{
+	    	color: $themeColour !important;
+
+
+	    	&::after{
+	    		transform: scaleX(1);
+	    	}
+	    }
+	}
+}
+
+
+/**** search*********/
+.dropdown{
+	@include paddingY(50px);
+	.search{
+		text-decoration: none;
+	    color: #ffffff !important;
+	    font-size: 20px;
+	    font-weight: 600;
+	}
+	.dropdown-menu{
+		background-color: $themeColour;
+		bottom: -40px;
+		width: 250px;
+		right: 0;
+		left: auto;
+
+		@include paddingY(0);
+		@include paddingX(0);
+	from{
+		background-color: #fff;
+		input{
+			border-radius: 0;
+			@include border(2px , #fff);
+		}
+	button{
+		background: $themeColour;
+		text-decoration: none;
+	    color: #fff !important;
+	    font-size: 20px;
+	    font-weight: 600;
+		border-radius: 0;
+		@include border(2px , #fff);
+	}
+	}
+	}
+}
+
+
+/*** Social-list**/
+
+.social-list{
+	li{
+		padding: 5px;
+		a{
+
+			width: 40px;
+			height: 40px;
+			line-height: 40px;
+			display: block;
+			text-align: center;
+			text-decoration: none;
+			background-color: transparent;
+			color: $themeColour;
+			@extend %border;
+
+			@include transition(0.3s , ease);
+
+			&:hover{
+				background-color:$themeColour;
+				color: #fff;
+				border: 1px solid $gray;
+			}
+
+		}
+	}
+
+}
+
+
+
+.slider-section{
+	.carousel{
+		.carousel-inner{
+			.carousel-item{
+				img{}
+				.carousel-caption{
+					bottom: 50%;
+					text-align: right;
+					@include translate(0,50%);
+					h5{
+						font-size: 70px;
+						font-weight: 400;
+						color: $themeColour;
+						text-transform: uppercase;
+					}
+					p{
+						font-weight: 800;
+						font-size: 70px;
+						color: #fff;
+						text-transform: uppercase;
+					}
+					.btn-custom{
+						background: $themeColour;
+						color: #fff;
+						font-weight: 500;
+						font-size: 18px;
+						border-radius: 0;
+						text-transform: uppercase;
+						margin: 0 10px;
+
+						@include border(2px,$themeColour);
+
+						@include paddingY(14px);
+						@include paddingX(45px);
+
+
+						&:hover{
+							background-color: transparent !important;
+							@include border(2px,#fff);
+						}
+					}
+				}
+			}
+		}
+
+
+		.carousel-control-prev{}
+		.carousel-control-next{}
+	}
+}
+
+
+/** heading  ****/
+
+.heading{
+	text-align: center;
+	h1{
+		color: $textColour;
+		font-size: 43px;
+		text-transform: uppercase;
+		font-weight: 700;
+		font-family: $font;
+	}
+	.line{
+		    max-width: 500px;
+		    position: relative;
+		    display: block;
+		    margin: auto;
+		    height: 2px;
+		    background: $themeColour;
+
+		    &::after{
+		    	position: absolute;
+		    	content: "";
+		    	width: 50px;
+		    	height: 6px;
+		    	right: 50%;
+		    	bottom: 50%;
+		    	background: #f39c12;
+		    	@include translate(50% , 50%);
+
+		    	animation-name: lineMove;
+		    	animation-duration: 20s;
+		    	animation-timing-function: ease-out;
+		    	animation-direction: alternate;
+
+
+		    }
+	}
+}
+
+
+@keyframes lineMove {
+  0%   {
+  		@include translate(50% , 50%);
+  	}
+  25%  {
+		right: 0;
+		@include translate(0 , 50%);
+	}
+  50%  {
+		right: 50%;
+		@include translate(50% , 50%);
+	}
+  75%  {
+		right: 100%;
+		@include translate(100% , 50%);
+	}
+  100% {
+		right: 50%;
+		@include translate(50% , 50%);
+	}
+}
